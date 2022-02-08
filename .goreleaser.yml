@@ -4,7 +4,11 @@ env:
   - GO111MODULE=on
 
 env_files:
-  github_token: .github_token
+  gitlab_token: .gitlab_token
+
+gitlab_urls:
+  api: "https://repo1.dso.mil/api/v4"
+  download: "https://repo1.dso.mil"
 
 before:
   hooks:
@@ -25,7 +29,6 @@ archives:
   - format: binary
 
 release:
-  github:
-    owner: joshrwolf
-    name: kustomize-helmgenerator
+  gitlab:
+    name: "11843"
   name_template: "Version {{.Version}}"
