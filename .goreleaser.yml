@@ -15,7 +15,7 @@ before:
     - go mod tidy
 
 builds:
-  - binary: HelmChart
+  - binary: HelmGenerator
     env:
       - CGO_ENABLED=0
     goos:
