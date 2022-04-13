@@ -61,3 +61,5 @@ mkdir -p ${XDG_CONFIG_HOME}/kustomize/plugin/wolfs.io/v1beta1/helmgenerator
 chmod +x HelmGenerator
 mv HelmGenerator ${XDG_CONFIG_HOME}/kustomize/plugin/wolfs.io/v1beta1/helmgenerator/
 ```
+
+#### Future Releases will be available from this repo once they have processed through the PartyBus artifact pipeline
