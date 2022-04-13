@@ -21,11 +21,13 @@ const kind = "HelmGenerator"
 
 type kvMap map[string]string
 
+// TypeMeta - Set Kubernetes API options
 type TypeMeta struct {
 	APIVersion string `json:"apiVersion" yaml:"apiVersion"`
 	Kind       string `json:"kind" yaml:"kind"`
 }
 
+// ObjectMeta - Set Kubernetes Resource options
 type ObjectMeta struct {
 	Name        string `json:"name" yaml:"name"`
 	Namespace   string `json:"namespace,omitempty" yaml:"namespace,omitempty"`
@@ -33,6 +35,7 @@ type ObjectMeta struct {
 	Annotations kvMap  `json:"annotations,omitempty" yaml:"annotations,omitempty"`
 }
 
+// HelmGenerator - Set Helm options
 type HelmGenerator struct {
 	TypeMeta   `json:",inline" yaml:",inline"`
 	ObjectMeta `json:"metadata" yaml:"metadata"`
