@@ -17,7 +17,7 @@ func Test_processHelmGenerator(t *testing.T) {
 		{
 			"HelmGenerator",
 			args{"testdata/generator.yaml"},
-			`---
+`---
 # Source: mocha/templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -27,9 +27,9 @@ spec:
   type: ClusterIP
   ports:
   - port: 80
-	targetPort: 80
-	protocol: TCP
-	name: http
+    targetPort: 80
+    protocol: TCP
+    name: http
 ---
 # Source: mocha/templates/deployment.yaml
 apiVersion: apps/v1
@@ -39,15 +39,15 @@ metadata:
 spec:
   replicas: 99
   template:
-	spec:
-	  containers:
-		- name: mocha
-		  image: "donkers:1.16.0"
-		  imagePullPolicy: Always
-		  ports:
-			- name: http
-			  containerPort: 80
-			  protocol: TCP
+    spec:
+      containers:
+        - name: mocha
+          image: "donkers:1.16.0"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
 `,
 		false,
 		},
