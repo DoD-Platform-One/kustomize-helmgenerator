@@ -1,4 +1,4 @@
-module github.com/joshrwolf/kustomize-helmgenerator
+module repo1.dso.mil/platform-one/big-bang/apps/product-tools/kustomize-helmgenerator
 
 go 1.17
 
