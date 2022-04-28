@@ -15,9 +15,9 @@ func Test_processHelmGenerator(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			"HelmGenerator",
+			"HelmGenerator: Valid",
 			args{"testdata/generator.yaml"},
-`---
+			`---
 # Source: mocha/templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -49,7 +49,37 @@ spec:
               containerPort: 80
               protocol: TCP
 `,
-		false,
+			false,
+		},
+		{
+			"HelmGenerator: Chart Fail",
+			args{"testdata/generator-chart-fail.yaml"},
+			``,
+			true,
+		},
+		{
+			"HelmGenerator: Values File Fail",
+			args{"testdata/generator-values-file-fail.yaml"},
+			``,
+			true,
+		},
+		{
+			"HelmGenerator: Values Inline Fail",
+			args{"testdata/generator-values-fail.yaml"},
+			``,
+			true,
+		},
+		{
+			"HelmGenerator: Sops Fail",
+			args{"testdata/generator-sops-fail.yaml"},
+			``,
+			true,
+		},
+		{
+			"HelmGenerator: Template Fail",
+			args{"testdata/generator-template-fail.yaml"},
+			``,
+			true,
 		},
 	}
 	for _, tt := range tests {

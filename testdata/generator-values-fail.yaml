@@ -1,0 +1,8 @@
+apiVersion: p1.dsop.io/v1beta1
+kind: HelmGenerator
+metadata:
+  name: helmGenerator
+releaseName: dog
+chartPath: testdata/mocha/ # Note this path is for _testing_ only, in a real scenario the path is simply relative
+namespace: coco
+values: UGxhdGZvcm1PbmUgLW4K
