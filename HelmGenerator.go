@@ -75,6 +75,9 @@ func main() {
 
 func processHelmGenerator(fn string) (string, error) {
 	data, err := ioutil.ReadFile(fn)
+	if err != nil {
+		return "", err
+	}
 
 	input := HelmGenerator{
 		TypeMeta: TypeMeta{},
@@ -83,14 +86,11 @@ func processHelmGenerator(fn string) (string, error) {
 		},
 	}
 	err = yaml.Unmarshal(data, &input)
-        if err != nil {
-                return "", err
-        }
+	if err != nil {
+		return "", err
+	}
 
 	templatedOut, err := input.helmTemplate()
-        if err != nil {
-                return "", err
-        }
 
 	return templatedOut, err
 }

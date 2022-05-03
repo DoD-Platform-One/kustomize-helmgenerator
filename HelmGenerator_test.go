@@ -81,6 +81,57 @@ spec:
 			``,
 			true,
 		},
+		{
+			"HelmGenerator: File Fail",
+			args{"testdata/no-such-file.yaml"},
+			``,
+			true,
+		},
+		{
+			"HelmGenerator: YAML Fail",
+			args{"testdata/generator-bad-yaml.yaml"},
+			``,
+			true,
+		},
+		{
+			"HelmGenerator: Hooks",
+			args{"testdata/generator-hooks.yaml"},
+			`---
+# Source: mocha/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mocha
+spec:
+  replicas: 99
+  template:
+    spec:
+      containers:
+        - name: mocha
+          image: "donkers:1.16.0"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mocha
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http`,
+			false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
