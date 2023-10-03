@@ -1,4 +1,4 @@
-# kustomize-helmgenerator
+# kustomize-helmgenerator 10/3
 
 A simple _exec_ plugin for Kustomize written in `go` to declaratively define `helm template` outputs as a Kustomize generator.
 
